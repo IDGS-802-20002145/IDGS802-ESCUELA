@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{%block content%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class="flashes">
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+{%from "_macros.html" import render_field%}
+<div class="container">
+    <div class="row">
+        <h3>Registrar Maestro</h3>
+        <form name="sent" action="/insertarMaestro" id="from1" method="POST">
+            <div class="row control-group">
+                <div class="from-group col-xs-12 float-label-from-group controls">
+                    {{render_field(form.nombre,class='form-control')}}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 float-label-from-group controls">
+                    {{render_field(form.apellidos,class='form-control')}}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 float-label-from-group controls">
+                    {{render_field(form.email,class='form-control')}}
+                </div>
+            </div>
+            <div class="row control-group">
+                <div class="form-group col-xs-12 float-label-from-group controls">
+                    {{render_field(form.profesion,class='form-control')}}
+                </div>
+            </div>
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            <input type="submit" id="reg-maestro" name="registra" value="Registrar">
+        </form>
+    </div>
+</div>
+    {%endblock%}

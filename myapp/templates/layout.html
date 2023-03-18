@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-kbHJXMAW6gP5CJzgeSFQsVgWgBY6XwKxdE+5g0330IDdj9A03QVZUsw+MzPx0qYj" crossorigin="anonymous">
+
+    <title>Menú Pricipal</title>
+</head>
+<style>
+    body {
+        padding-top: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+
+    }
+
+    .tr-head {
+        background: #dff0d8;
+    }
+
+    .form-container {
+        border: 1px solid black;
+        padding: 10px;
+    }
+
+    .form-container-left {
+        float: left;
+        width: 45%;
+    }
+
+    .form-container-right {
+        float: right;
+        width: 45%;
+    }
+
+    .form-result {
+        margin-top: 20px;
+    }
+
+    table {
+        border: 2px solid black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+    }
+</style>
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap-responsive.min.css">
+
+<body>
+    <div class="navbar navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand" href="">
+                    UTL-IDGS
+                </a>
+                <ul class="nav">
+                    <li>
+                        <a href="/">
+                            <i class="icon-home icon-white"></i>
+                            Inicio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('alumnos.ABCompleto') }}">
+                            <i class="icon-user icon-white"></i>
+                            Alumnos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('maestros.ABCompleto') }}">
+                            <i class="icon-user icon-white"></i>
+                            Maestros
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        {%with messages = get_flashed_messages()%}
+        {%if messages%}
+        {%for message in messages%}
+        <div class="alert alert-success">
+            {{message}}
+        </div>
+        {%endfor%}
+        {%endif%}
+        {%endwith%}
+        {%block content%}
+        {%endblock%}
+
+
+
+    </div>
+
+</body>
+
+</html>
